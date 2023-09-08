@@ -1,0 +1,11 @@
+{
+    "nombre": "API - EXPRESS - USUARIOS Y CURSOS",
+    "configDB": {
+        "host": "mongodb://127.0.0.1:27017/",
+        "dbName": "pruebaApi"
+    },
+    "configToken": {
+        "signature": "secret",
+        "exp": "1h"
+    }
+}

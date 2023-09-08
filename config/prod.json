@@ -1,0 +1,10 @@
+{
+    "nombre": "API - EXPRESS - USUARIOS Y CURSOS",
+    "configDB": {
+
+    },
+    "configToken": {
+        "signature": "secret",
+        "exp": "1h"
+    }
+}

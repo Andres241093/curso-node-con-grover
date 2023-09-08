@@ -1,0 +1,64 @@
+mongosh -> terminal de mongodb
+show dbs -> mostrar bases de datos
+show collections -> lista las colecciones
+use DB_NAME -> crear base de datos, no se listará hasta crear una colección
+db.dropDatabase() -> eliminar base de datos
+db.createCollection('COLLECTION_NAME') -> crear nueva colección (Tabla en SQL)
+db.getCollectionNames() -> obtiene una lista de colecciones dentro de la BD
+db.COLLECTION_NAME.insertOne({'nombre':'JavaScript'}) -> crear documento (Fila en SQL) en colección
+db.getCollection('COLLECTION_NAME').find({}) -> Listar documentos
+db.COLLECTION_NAME.drop() -> eliminar colección
+
+establecer57339947 variable de entorno NODE:
+
+export NODE_ENV=dev
+
+tipos de relaciones en MongoDB:
+
+-Por documentos embebidos
+-Por referencia
+
+//Por referencia: Se parece a la normalización en BD relacionales. 
+//Son consistentes, pero lentas
+
+let usuario = {
+    id: 'U001',
+    nombre: 'Andres',
+    email: 'andres@mail.com'
+}
+
+let curso = {
+    id: 'C0001',
+    id_alumnos: ['U001','U002','U003'],
+    titulo: 'JavaScript',
+    descripcion: 'test description'
+}
+
+//Por documentos embebidos: se conoce como desnormalización de BD, 
+//es inconsistente, las consultas se hacen más rápido, por lo que se gana performance
+
+let curso = {
+    id: 'C0001',
+    autor: {
+        nombre: 'Carlos'
+    },
+    id_alumnos: [
+        {
+            id: 'U001',
+            nombre: 'Andres',
+            email: 'andres@email.com'
+        },
+        {
+            id: 'U002',
+            nombre: 'Jose',
+            email: 'jose@email.com'
+        },
+        {
+            id: 'U003',
+            nombre: 'Maria',
+            email: 'maria@email.com'
+        }
+    ],
+    titulo: 'JavaScript',
+    descripcion: 'test description'
+}
