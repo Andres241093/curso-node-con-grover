@@ -36,15 +36,14 @@ ruta.delete('/:id',verificarToken,(req,res)=>{
 
 async function listarCursosActivos(){
     let cursos = await Curso
-    .find({'estado':true})
-    .populate('autor','nombre -_id');
+    .find({'estado':true});
     return cursos;
 }
 
 async function crearCurso(req) {
     let curso = new Curso({
         ...req.body,
-        autor: req.usuario._id
+        autor: req.usuario
     });
     return await curso.save();
 }
